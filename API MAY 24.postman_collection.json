@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "70c84f16-2995-4c3f-9abd-38a94b800775",
+		"name": "API MAY 24",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32597196"
+	},
+	"item": [
+		{
+			"name": "Sign-in(S)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response body contains string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"});\r",
+							"var responseBody = pm.response.json();\r",
+							"pm.test(\"JSON value check\", function () {\r",
+							"     pm.expect(responseBody.user).to.have.property(\"id\");\r",
+							"});\r",
+							"\r",
+							"let baseUrl = pm.environment.get(\"baseUrl\");\r",
+							"console.log(\"Base URL:\", baseUrl);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"let baseUrl = pm.environment.get(\"baseUrl\");\r",
+							"\r",
+							"\r",
+							"console.log(\"Base URL:\", baseUrl);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"karen.man222@mail.ru\",\r\n   \"password\": \"ABC123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/sign-in",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign-in {T}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response body contains string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"role\");\r",
+							"});\r",
+							"var responseBody = pm.response.json();\r",
+							"pm.test(\"JSON value check\", function () {\r",
+							"     pm.expect(responseBody.user).to.have.property(\"id\");\r",
+							"});\r",
+							"\r",
+							"let baseUrl = pm.environment.get(\"baseUrl\");\r",
+							"\r",
+							"\r",
+							"console.log(\"Base URL:\", baseUrl);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"let baseUrl = pm.environment.get(\"baseUrl\");\r",
+							"\r",
+							"\r",
+							"console.log(\"Base URL:\", baseUrl);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"ask_instr@aol.com\",\r\n   \"password\": \"ABC123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/sign-in",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create-Quiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response body contains 'id' and 'createdAt'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"createdAt\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+							"});\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"pm.test(\"JSON value check\", function () {\r",
+							"   \r",
+							"    pm.expect(responseBody).to.have.property(\"id\");\r",
+							"    pm.expect(responseBody).to.have.property(\"createdAt\");\r",
+							"   \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Teacher Token }}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Demo Quiz\",\r\n  \"totalScore\": 18,\r\n  \"passingPercentage\": 75,\r\n  \"showStopperQuestion\": 1,\r\n  \"questions\": [\r\n    {\r\n      \"type\": \"TEXTUAL\",\r\n      \"question\": \"What is your name?\",\r\n      \"score\": 5\r\n    },\r\n    {\r\n      \"type\": \"SINGLE_CHOICE\",\r\n      \"question\": \"Which city is city largest in California?\",\r\n      \"score\": 7,\r\n      \"answer\": 2,\r\n      \"hasOtherOption\": false,\r\n      \"options\": [\r\n        \"San Francisco\",\r\n        \"Sacramento\",\r\n        \"Los Angeles\",\r\n        \"Redding\"\r\n      ]\r\n    },\r\n    {\r\n      \"type\": \"MULTIPLE_CHOICE\",\r\n      \"question\": \"Who was apple founded by?\",\r\n      \"score\": 6,\r\n      \"answers\": [\r\n        0,\r\n        1,\r\n        2\r\n      ],\r\n      \"hasOtherOption\": true,\r\n      \"options\": [\r\n        \"Steve Jobs\",\r\n        \"Steve Wozniak\",\r\n        \"Ronald Wayne\",\r\n        \"Ronald Reagan\"\r\n      ]\r\n    }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/quiz",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update-Quiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response body contains 'id' and 'createdAt'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"createdAt\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+							"});\r",
+							"\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"pm.test(\"JSON value check\", function () {\r",
+							"   \r",
+							"    pm.expect(responseBody).to.have.property(\"id\");\r",
+							"    pm.expect(responseBody).to.have.property(\"createdAt\");\r",
+							"   \r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Teacher Token }}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"28195\",\r\n    \"name\": \"Updated Sample Quiz\",\r\n    \"title\": \"Updated Sample Quiz Title\",\r\n    \"description\": \"This is an updated sample quiz description.\",\r\n    \"totalScore\": 2,\r\n    \"passingPercentage\": 50,\r\n    \"questions\": [\r\n        {\r\n            \"question\": \"What is the capital of France?\",\r\n            \"type\": \"TEXTUAL\",\r\n            \"options\": [\r\n                \"Berlin\",\r\n                \"London\",\r\n                \"Paris\",\r\n                \"Madrid\"\r\n            ],\r\n            \"correct_answer\": \"Paris\",\r\n            \"score\": 1\r\n        },\r\n        {\r\n            \"question\": \"What is 2 + 2?\",\r\n            \"type\": \"TEXTUAL\",\r\n            \"correct_answer\": \"4\",\r\n            \"score\": 1\r\n        }\r\n    ],\r\n    \"category\": \"General Knowledge\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/quiz",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-Quizzes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 550ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(550);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response body contains 'id' and 'createdAt'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"createdAt\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+							"     pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"});\r",
+							"\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"JSON value check\", function () {\r",
+							"pm.expect(responseBody).to.be.an('array');\r",
+							" responseBody.forEach(function(item) {\r",
+							"        pm.expect(item).to.have.property('id');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Teacher Token }}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/quizzes",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"quizzes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign new quiz to Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response body contains 'id' and 'createdAt'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"createdAt\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"updatedAt\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"userId\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"});\r",
+							"\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"\r",
+							"pm.test(\"JSON value check\", function () {\r",
+							" \r",
+							"    pm.expect(responseBody).to.be.an('array');\r",
+							"    responseBody.forEach(function(item) {\r",
+							"        pm.expect(item).to.have.property('id');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Teacher Token }}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"quizId\": 24894,\r\n  \"userIds\": [13401]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/assignment",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"assignment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check assignments as Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var responseBody = pm.response.json();\r",
+							"\r",
+							"pm.test(\"JSON value check\", function () {\r",
+							"    pm.expect(responseBody).to.be.an('array');\r",
+							"    responseBody.forEach(function(item) {\r",
+							"        pm.expect(item).to.have.property('id');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Student Token }}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/my-assignments",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"my-assignments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
